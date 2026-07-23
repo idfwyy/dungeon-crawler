@@ -1,5 +1,5 @@
-class Player:
-    def __init__(self, name, health, attack_power):
+class Character:
+    def __init__(self,name,health,attack_power):
         self.name = name
         self.health = health
         self.attack_power = attack_power
@@ -11,19 +11,12 @@ class Player:
     def attack(self,target):
         target.take_damage(self.attack_power)
 
-class Enemy:
-    def __init__(self,name,health, attack_power):
-        self.name = name
-        self.health = health
-        self.attack_power = attack_power
 
-    def take_damage(self,amount):
-        self.health = self.health - amount
-        return self.health
-    
-    def attack(self,target):
-        target.take_damage(self.attack_power)
-    
+class Player(Character):
+    pass
+
+class Enemy(Character):
+    pass
     
 
 hero = Player("AARON", 100, 32)
