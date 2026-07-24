@@ -10,7 +10,10 @@ class Character:
         return self.health
     
     def attack(self,target):
-        target.take_damage(self.attack_power)
+        if self.weapon is None:
+            target.take_damage(self.attack_power)
+        else:
+            return target.take_damage(self.attack_power + self.weapon.power)
 
 class Weapon:
     def __init__(self,name,power):
