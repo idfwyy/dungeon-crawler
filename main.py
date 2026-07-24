@@ -1,8 +1,9 @@
 class Character:
-    def __init__(self,name,health,attack_power):
+    def __init__(self,name,health,attack_power,weapon = None):
         self.name = name
         self.health = health
         self.attack_power = attack_power
+        self.weapon = weapon
 
     def take_damage(self, amount):
         self.health = self.health - amount
@@ -11,9 +12,15 @@ class Character:
     def attack(self,target):
         target.take_damage(self.attack_power)
 
+class Weapon:
+    def __init__(self,name,power):
+        self.name = name
+        self.power = power
+
 
 class Player(Character):
     pass
+        
 
 class Enemy(Character):
     pass
@@ -35,16 +42,13 @@ print(goblin.name)
 print(goblin.health)
 print(goblin.attack_power)
 
-hero = Player("AARON", 100, 32)
-hero.take_damage(40)
-print(hero.health)
-
-hero.attack(goblin)
-hero.attack(dragon)
-print(goblin.health)
-print(dragon.health)
 
 goblin.take_damage(20)
 print(goblin.health)
 
-
+sword = Weapon("Iron rail",22)
+hero = Player("james",100,40,sword)
+print(hero.weapon.name)
+hero.attack(goblin)
+hero.attack(dragon)
+print(dragon.health)
