@@ -7,6 +7,7 @@ class Character:
 
     def take_damage(self, amount):
         self.health = self.health - amount
+        self.health = max(0,self.health)
         return self.health
     
     def attack(self,target):
@@ -14,6 +15,12 @@ class Character:
             target.take_damage(self.attack_power)
         else:
             return target.take_damage(self.attack_power + self.weapon.power)
+        
+    def is_alive(self):
+        if self.health > 0:
+            return True
+        return False
+
 
 class Weapon:
     def __init__(self,name,power):
@@ -55,3 +62,8 @@ print(hero.weapon.name)
 hero.attack(goblin)
 hero.attack(dragon)
 print(dragon.health)
+
+goblin = Goblin("Grunk")
+goblin.take_damage(500)
+print(goblin.health)         # 0, and actually stored as 0
+print(goblin.is_alive())     # False
