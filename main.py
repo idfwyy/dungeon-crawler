@@ -46,24 +46,22 @@ class Dragon(Enemy):
     def take_damage(self, amount):
         return super().take_damage(amount/2)
     
-goblin = Goblin("Grunk")
-dragon = Dragon("Smaug")
-print(goblin.name)
-print(goblin.health)
-print(goblin.attack_power)
 
 
-goblin.take_damage(20)
-print(goblin.health)
+sword = Weapon("Iron rail",6)
+hero = Player("SpiderMan",100,3,sword)
+goblin = Goblin("DR.OCTOPUS")
 
-sword = Weapon("Iron rail",22)
-hero = Player("james",100,40,sword)
-print(hero.weapon.name)
-hero.attack(goblin)
-hero.attack(dragon)
-print(dragon.health)
+while hero.is_alive() and goblin.is_alive():
+    hero.attack(goblin)
+    print(goblin.health)
+    if goblin.is_alive():
+        goblin.attack(hero)
+        print(hero.health)
+    
+if hero.is_alive():
+    print("Hero won!")
+else:
+    print("Goblin won!")
 
-goblin = Goblin("Grunk")
-goblin.take_damage(500)
-print(goblin.health)         # 0, and actually stored as 0
-print(goblin.is_alive())     # False
+
