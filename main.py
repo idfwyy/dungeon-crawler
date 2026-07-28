@@ -54,13 +54,13 @@ goblin = Goblin("DR.OCTOPUS")
 
 while hero.is_alive() and goblin.is_alive():
     hero.attack(goblin)
-    print(goblin.health)
+    print(f"{hero.name} attacked {goblin.name}! Now {goblin.name} health is {goblin.health}")
     if goblin.is_alive():
         goblin.attack(hero)
-        print(hero.health)
+        print(f"{goblin.name} attacked {hero.name}! Now {hero.name} health is {hero.health}")
     
 if hero.is_alive():
-    print("Hero won!")
+    print(f"{hero.name} won!")
 else:
     print("Goblin won!")
 
